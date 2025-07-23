@@ -1,42 +1,88 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { allDishes, restaurants } from '../data/mockData';
-import RestaurantCard from '../components/RestaurantCard';
+
+function getCombinations<T>(arr: T[]): T[][] {
+  const result: T[][] = [[]];
+  for (const value of arr) {
+    const copy = [...result];
+    for (const prefix of copy) {
+      result.push(prefix.concat(value));
+    }
+  }
+  return result.filter(comb => comb.length > 0);
+}
 
 const ResultsScreen = () => {
   const { amount, dishes } = useLocalSearchParams();
   const selectedIds = typeof dishes === 'string' ? dishes.split(',').map(Number) : [];
   const selectedNames = allDishes.filter(d => selectedIds.includes(d.id)).map(d => d.name);
   const maxAmount = Number(amount) || 0;
+  const router = useRouter();
 
-  const results = restaurants.map(rest => {
-    const filteredDishes = rest.dishes.filter(d => selectedIds.includes(d.id));
-    const total = filteredDishes.reduce((sum, d) => sum + d.price, 0);
+  const restaurantVariants = restaurants.map(rest => {
+    const filteredDishes = rest.dishes.filter(d => selectedIds.includes(d.id)) as { id: number; name: string; price: number }[];
+    const combinations = getCombinations(filteredDishes).filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount);
     return {
       ...rest,
-      filteredDishes,
-      total,
+      variants: combinations,
     };
-  }).filter(r => r.filteredDishes.length > 0 && r.total <= maxAmount);
+  }).filter(r => r.variants.length > 0);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Результаты подбора</Text>
-      <Text>Сумма: {amount} ₽</Text>
-      <Text>Выбранные блюда: {selectedNames.join(', ') || 'не выбраны'}</Text>
-      <Text style={styles.subtitle}>Рационы по ресторанам:</Text>
-      {results.length === 0 ? (
-        <Text style={{ marginTop: 16 }}>Нет подходящих рационов</Text>
-      ) : (
-        <FlatList
-          data={results}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => (
-            <RestaurantCard restaurant={item} />
-          )}
-        />
-      )}
+      <View style={styles.headerRow}>
+        <Text style={styles.label}>Указанная сумма: </Text>
+        <Text style={styles.amount}>{amount}р</Text>
+      </View>
+      <View style={styles.headerRow}>
+        <Text style={styles.label}>Указанные категории: </Text>
+        <Text style={styles.categories} numberOfLines={1} ellipsizeMode="tail">
+          {selectedNames.slice(0, 7).join(', ')}{selectedNames.length > 7 ? ', ...' : ''}
+        </Text>
+      </View>
+      <FlatList
+        data={restaurantVariants}
+        keyExtractor={item => item.id.toString()}
+        style={{ marginTop: 24 }}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => router.push({
+              pathname: '/restaurantVariants',
+              params: {
+                id: item.id,
+                amount,
+                dishes,
+              },
+            })}
+            activeOpacity={0.85}
+          >
+            <View style={styles.cardContent}>
+              <Image
+                source={require('../assets/images/icon.png')}
+                style={styles.restaurantImage}
+                resizeMode="cover"
+              />
+              <View style={{ flex: 1 }}>
+                <Text style={styles.restaurantName}>{item.name}</Text>
+                <Text style={styles.variantCount}>{item.variants.length} варианта</Text>
+              </View>
+              <View style={styles.arrowCircle}>
+                <Ionicons name="arrow-forward" size={28} color="#fff" />
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
+        ListEmptyComponent={
+          <View style={styles.card}>
+            <Text style={styles.emptyText}>К сожалению, не нашлось подходящих вариантов</Text>
+          </View>
+        }
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
@@ -44,19 +90,79 @@ const ResultsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
-    paddingTop: 48,
+    backgroundColor: '#dde8ee',
+    padding: 16,
   },
-  title: {
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  label: {
+    fontSize: 16,
+    color: '#222',
+  },
+  amount: {
+    fontSize: 20,
+    color: '#FFA500',
+    fontWeight: 'bold',
+  },
+  categories: {
+    fontSize: 16,
+    color: '#FFA500',
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  card: {
+    backgroundColor: '#FFA500',
+    borderRadius: 20,
+    padding: 16,
+    marginBottom: 18,
+    alignItems: 'center',
+    flexDirection: 'row',
+    minHeight: 80,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  cardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  restaurantImage: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
+    marginRight: 16,
+    backgroundColor: '#fff',
+  },
+  restaurantName: {
+    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 4,
   },
-  subtitle: {
+  variantCount: {
+    color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 16,
-    marginBottom: 8,
+  },
+  arrowCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#4CAF50',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 12,
+  },
+  emptyText: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
+    flex: 1,
+    width: '100%',
   },
 });
 
