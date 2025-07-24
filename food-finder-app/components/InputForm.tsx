@@ -1,26 +1,21 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  FlatList,
-  Modal,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    FlatList,
+    Modal,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { allDishes } from "../data/mockData";
 
 const ANY_DISH_ID = -1;
 
 const dishMap: Record<number, string> = {
-    [ANY_DISH_ID]: "Любое",
-    1: "Пицца",
-    2: "Салат",
-    3: "Суп",
-    4: "Бургер",
-    5: "Картофель фри",
-    6: "Комплекс",
+  [ANY_DISH_ID]: "Любое",
+  ...Object.fromEntries(allDishes.map(d => [d.id, d.name])),
 };
 
 const grid = [
@@ -39,13 +34,13 @@ const InputForm = () => {
 
     const handleSubmit = () => {
         const dishesToSend = selectedDishes.includes(ANY_DISH_ID)
-            ? allDishes.map((d) => d.id)
+            ? allDishes.map((d) => d.id) 
             : selectedDishes;
         router.push({
             pathname: "/results",
             params: {
                 amount,
-                dishes: dishesToSend.join(","),
+                categories: dishesToSend.join(","),
             },
         });
     };

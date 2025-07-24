@@ -16,15 +16,20 @@ function getCombinations<T>(arr: T[]): T[][] {
 }
 
 const ResultsScreen = () => {
-  const { amount, dishes } = useLocalSearchParams();
-  const selectedIds = typeof dishes === 'string' ? dishes.split(',').map(Number) : [];
+  const { amount, categories } = useLocalSearchParams();
+  const selectedIds = typeof categories === 'string' && categories.length > 0 ? categories.split(',').map(Number) : [];
   const selectedNames = allDishes.filter(d => selectedIds.includes(d.id)).map(d => d.name);
   const maxAmount = Number(amount) || 0;
   const router = useRouter();
 
   const restaurantVariants = restaurants.map(rest => {
-    const filteredDishes = rest.dishes.filter(d => selectedIds.includes(d.id)) as { id: number; name: string; price: number }[];
-    const combinations = getCombinations(filteredDishes).filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount);
+    let filteredDishes = rest.dishes;
+    if (selectedNames.length > 0) {
+      filteredDishes = rest.dishes.filter(d => selectedNames.includes(d.category));
+    }
+    const combinations = getCombinations(filteredDishes)
+      .filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount)
+      .slice(0, 100); // TODO: крч дура тупая вылетает без ограничения, надо нормальный алгоритм придумать, а не просто ограничение
     return {
       ...rest,
       variants: combinations,
@@ -55,7 +60,7 @@ const ResultsScreen = () => {
               params: {
                 id: item.id,
                 amount,
-                dishes,
+                categories,
               },
             })}
             activeOpacity={0.85}

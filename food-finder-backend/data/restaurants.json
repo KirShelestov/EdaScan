@@ -1,0 +1,218 @@
+[
+  {
+    "category": "Горячие блюда",
+    "name": "Буузы",
+    "price": 72,
+    "img": "https://admin.monobox.app/cropped-image/500x500/4eb80b454f7a5e7bcefd299f163df420.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Пюре",
+    "price": 89,
+    "img": "https://admin.monobox.app/cropped-image/500x500/a64ef6a4d98e480c9b48e87272a90a0b.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Лапша с говядиной",
+    "price": 329,
+    "img": "https://admin.monobox.app/cropped-image/500x500/1ec0d682d2604f75d304d735c9e35c1d.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Плов с курицей 1/2",
+    "price": 180,
+    "img": "https://admin.monobox.app/cropped-image/500x500/575ad2522fa376724a43e06564bfd60c.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Лапша с курицей 1/2",
+    "price": 229,
+    "img": "https://admin.monobox.app/cropped-image/500x500/364f9f3cbcad4825ede20bf7e6b5fe13.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Плов с курицей",
+    "price": 230,
+    "img": "https://admin.monobox.app/cropped-image/500x500/d4711fd9c7b34bdea6aa18a64ab2e5a7.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Лапша с говядиной 1/2",
+    "price": 229,
+    "img": "https://admin.monobox.app/cropped-image/500x500/eeca74c6856dc65007aa9e1baf09636c.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Лапша с курицей",
+    "price": 299,
+    "img": "https://admin.monobox.app/cropped-image/500x500/5cf907da5c952df57da14a13469146bb.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Жаркое из курицы",
+    "price": 329,
+    "img": "https://admin.monobox.app/cropped-image/500x500/3249e7bacf22534eb36b91f0637dda19.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Цуйван",
+    "price": 199,
+    "img": "https://admin.monobox.app/cropped-image/500x500/5ac4931d255e9fb1d02be79efcff7c6a.webp"
+  },
+  {
+    "category": "Горячие блюда",
+    "name": "Рис",
+    "price": 59,
+    "img": "https://admin.monobox.app/cropped-image/500x500/8ad1be8589443bb1ff34e343a8e66abd.webp"
+  },
+  {
+    "category": "Салаты",
+    "name": "Салат Морковь по-корейски",
+    "price": 79,
+    "img": "https://admin.monobox.app/cropped-image/500x500/f8a78015ce6e6ddee5a99699e89ddc5d.webp"
+  },
+  {
+    "category": "Салаты",
+    "name": "Салат Свекольный",
+    "price": 79,
+    "img": "https://admin.monobox.app/cropped-image/500x500/ff4b3e73c24f50e88f7442dc05acfa20.webp"
+  },
+  {
+    "category": "Салаты",
+    "name": "Салат Витаминный",
+    "price": 79,
+    "img": "https://admin.monobox.app/cropped-image/500x500/5f9a8ead4513a7c19033ae56ae0fd650.webp"
+  },
+  {
+    "category": "Салаты",
+    "name": "Салат Фунчоза",
+    "price": 79,
+    "img": "https://admin.monobox.app/cropped-image/500x500/5eb1a39729df0a69f74b4a93e01cfe03.webp"
+  },
+  {
+    "category": "Салаты",
+    "name": "Салат Битые огурцы",
+    "price": 129,
+    "img": "https://admin.monobox.app/cropped-image/500x500/905d7885bba45c66b4727794dd8d077b.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Шулэн с говядиной",
+    "price": 179,
+    "img": "https://admin.monobox.app/cropped-image/500x500/4434f44c0ca16ff9b5711269e531be0c.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Шулэн ТомЯм",
+    "price": 299,
+    "img": "https://admin.monobox.app/cropped-image/500x500/662745ebbc00322dd26952be583922e9.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Борщ 1/2",
+    "price": 139,
+    "img": "https://admin.monobox.app/cropped-image/500x500/e14611a7c478d49ec548488f17eceec9.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Борщ",
+    "price": 189,
+    "img": "https://admin.monobox.app/cropped-image/500x500/0178b628939ca1ddb31f979c88cf8cf1.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Хлеб черный",
+    "price": 8,
+    "img": "https://admin.monobox.app/cropped-image/500x500/439267480395bc9c0e7f00054f74bc9b.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Хлеб белый",
+    "price": 8,
+    "img": "https://admin.monobox.app/cropped-image/500x500/1b8878bf7fe332b877175f7764dd5ed6.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Лагман 1/2",
+    "price": 189,
+    "img": "https://admin.monobox.app/cropped-image/500x500/fe6077f815fdba5b70b3d236a3382a60.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Лагман",
+    "price": 269,
+    "img": "https://admin.monobox.app/cropped-image/500x500/0908e42c4d946a05fe191fb0079d23eb.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Шулэн с говядиной 1/2",
+    "price": 129,
+    "img": "https://admin.monobox.app/cropped-image/500x500/4675a41ee22751b7fdb823251c919f78.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Шулэн с курицей",
+    "price": 179,
+    "img": "https://admin.monobox.app/cropped-image/500x500/f756f1999c05f9e8fa7f535bce76f617.webp"
+  },
+  {
+    "category": "Супы",
+    "name": "Шулэн с курицей 1/2",
+    "price": 129,
+    "img": "https://admin.monobox.app/cropped-image/500x500/377345a3a2e090063fb262aee07c94bf.webp"
+  },
+  {
+    "category": "Напитки",
+    "name": "Морс Облепиха",
+    "price": 119,
+    "img": "https://admin.monobox.app/cropped-image/500x500/58d0337d3f40c2f5ae009ef849abfdb0.webp"
+  },
+  {
+    "category": "Напитки",
+    "name": "Морс Брусника",
+    "price": 119,
+    "img": "https://admin.monobox.app/cropped-image/500x500/cca5d0c2f0823f3901dcd658a3bc330b.webp"
+  },
+  {
+    "category": "Десерты",
+    "name": "Бовы",
+    "price": 114,
+    "img": "https://admin.monobox.app/cropped-image/500x500/9812ed473ed0d1d83f6178648e9274c2.webp"
+  },
+  {
+    "category": "Десерты",
+    "name": "Сгущенка",
+    "price": 40,
+    "img": "https://admin.monobox.app/cropped-image/500x500/43160c66dc3044395768ebc4d02273df.webp"
+  },
+  {
+    "category": "Соусы",
+    "name": "Соус соевый",
+    "price": 40,
+    "img": "https://admin.monobox.app/cropped-image/500x500/ab07b670af9587deb68f8d63ae701481.webp"
+  },
+  {
+    "category": "Соусы",
+    "name": "Соус сметана",
+    "price": 40,
+    "img": "https://admin.monobox.app/cropped-image/500x500/f13aeaba71cdcbca9204ca7b42f1c3b5.webp"
+  },
+  {
+    "category": "Соусы",
+    "name": "Соус Хан Буз",
+    "price": 40,
+    "img": "https://admin.monobox.app/cropped-image/500x500/7dd9991ed4c47929cfe53689d18c75c3.webp"
+  },
+  {
+    "category": "Соусы",
+    "name": "Соус острый",
+    "price": 40,
+    "img": "https://admin.monobox.app/cropped-image/500x500/d3ecd2553b8c84dc751c52e9d5a643ff.webp"
+  },
+  {
+    "category": "Продукция",
+    "name": "Буузы замороженные 20 шт.",
+    "price": 1200,
+    "img": "https://admin.monobox.app/cropped-image/500x500/487f695247a8b10f7b1eebab9596f4ba.webp"
+  }
+]

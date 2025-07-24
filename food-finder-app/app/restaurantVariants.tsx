@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useFavorite } from '../components/FavoriteContext';
 import VariantCard from '../components/VariantCard';
-import { restaurants } from '../data/mockData';
+import { allDishes, restaurants } from '../data/mockData';
 
 function getCombinations<T>(arr: T[]): T[][] {
   const result: T[][] = [[]];
@@ -17,9 +17,10 @@ function getCombinations<T>(arr: T[]): T[][] {
 }
 
 const RestaurantVariantsScreen = () => {
-  const { id, amount, dishes } = useLocalSearchParams();
+  const { id, amount, categories } = useLocalSearchParams();
   const restaurant = restaurants.find(r => r.id === Number(id));
-  const selectedIds = typeof dishes === 'string' ? dishes.split(',').map(Number) : [];
+  const selectedIds = typeof categories === 'string' && categories.length > 0 ? categories.split(',').map(Number) : [];
+  const selectedNames = allDishes.filter(d => selectedIds.includes(d.id)).map(d => d.name);
   const maxAmount = Number(amount) || 0;
   const { addFavorite, removeFavorite, isFavorite } = useFavorite();
 
@@ -27,9 +28,13 @@ const RestaurantVariantsScreen = () => {
     return <View style={styles.container}><Text>Ресторан не найден</Text></View>;
   }
 
-  const filteredDishes = restaurant.dishes.filter(d => selectedIds.includes(d.id));
+  let filteredDishes = restaurant.dishes;
+  if (selectedNames.length > 0) {
+    filteredDishes = restaurant.dishes.filter(d => selectedNames.includes(d.category));
+  }
   const combinations = getCombinations(filteredDishes)
-    .filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount);
+    .filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount)
+    .slice(0, 100); // TODO: крч дура тупая вылетает без ограничения, надо нормальный алгоритм придумать, а не просто ограничение
 
   return (
     <View style={styles.container}>
