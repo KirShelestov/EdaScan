@@ -2,28 +2,43 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { parseKhanBuzMenu } from "./parsers/khanbuz.js";
+import { parseSunnyDayCategories } from "./parsers/sunnyday.js";
+import { recognizeImageText, parseOcrMenuText } from "./parsers/ocr.js";
+import { getLatestPostImage } from "./parsers/vkapi.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-function normalizeData(rawDishes) {
-    return [
-        {
-            id: 1,
-            name: "Хан-буз",
-            dishes: rawDishes.map((dish, idx) => ({
-                id: idx + 1,
-                name: dish.name,
-                price: dish.price,
-                category: dish.category,
-            })),
-        },
-    ];
+function normalizeData(rawDishes, id, name) {
+    return {
+        id,
+        name,
+        dishes: rawDishes.map((dish, idx) => ({
+            id: idx + 1,
+            name: dish.name,
+            price: dish.price,
+            category: dish.category,
+        })),
+    };
 }
 
 async function updateRestaurants() {
     const khanbuzData = await parseKhanBuzMenu();
-    const restaurantsData = normalizeData(khanbuzData);
+    const khanbuz = normalizeData(khanbuzData, 1, "Хан-буз");
+
+    const sunnydayData = await parseSunnyDayCategories();
+    const sunnyday = normalizeData(sunnydayData, 2, "Солекчный день");
+
+    let stolovaya = null;
+    const vkImg = await getLatestPostImage();
+    if (vkImg) {
+        const text = await recognizeImageText(vkImg);
+        const ocrData = parseOcrMenuText(text);
+        stolovaya = normalizeData(ocrData, 3, "Солянка");
+    }
+
+    const restaurantsData = [khanbuz, sunnyday];
+    if (stolovaya) restaurantsData.push(stolovaya);
 
     const categorySet = new Set();
     restaurantsData.forEach((rest) => {
