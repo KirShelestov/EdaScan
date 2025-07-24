@@ -3,15 +3,23 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFavorite } from '../components/FavoriteContext';
-import { restaurants } from '../data/mockData';
+import { useRemoteData } from '../data/useRemoteData';
+
+const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`;
 
 const FavoritesScreen = () => {
+  const { data, loading, error } = useRemoteData(DATA_URL);
   const { favorites, removeFavorite } = useFavorite();
   const router = useRouter();
 
+  if (loading) return <Text>Загрузка...</Text>;
+  if (error) return <Text>Ошибка: {error}</Text>;
+  if (!data) return null;
+  const { restaurants } = data;
+
   const favoriteData = favorites.map(fav => {
-    const restaurant = restaurants.find(r => r.id === fav.restaurantId);
-    const dishes = restaurant ? restaurant.dishes.filter(d => fav.dishIds.includes(d.id)) : [];
+    const restaurant = restaurants.find((r: any) => r.id === fav.restaurantId);
+    const dishes = restaurant ? restaurant.dishes.filter((d: any) => fav.dishIds.includes(d.id)) : [];
     return { ...fav, restaurant, dishes };
   });
 
@@ -34,12 +42,11 @@ const FavoritesScreen = () => {
                 <Ionicons name="close" size={36} color="#222" style={styles.closeIcon} />
               </TouchableOpacity>
             </View>
-            {item.dishes.map(dish => (
+            {item.dishes.map((dish: any) => (
               <Text key={dish.id} style={styles.dishText}>• {dish.name} - {dish.price}₽</Text>
             ))}
           </View>
         )}
-        ListEmptyComponent={<Text style={styles.emptyText}>Нет любимых позиций</Text>}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useFavorite } from '../components/FavoriteContext';
 import VariantCard from '../components/VariantCard';
-import { allDishes, restaurants } from '../data/mockData';
+import { useRemoteData } from '../data/useRemoteData';
 
 function getCombinations<T>(arr: T[]): T[][] {
   const result: T[][] = [[]];
@@ -16,13 +16,23 @@ function getCombinations<T>(arr: T[]): T[][] {
   return result.filter(comb => comb.length > 0);
 }
 
+const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`; 
+
 const RestaurantVariantsScreen = () => {
+  const { data, loading, error } = useRemoteData(DATA_URL);
+  const { addFavorite, removeFavorite, isFavorite } = useFavorite();
   const { id, amount, categories } = useLocalSearchParams();
+  console.log('data:', data, 'loading:', loading, 'error:', error);
+
+  if (loading) return <Text>Загрузка...</Text>;
+  if (error) return <Text>Ошибка: {error}</Text>;
+  if (!data) return null;
+  const { restaurants, allDishes }: { restaurants: any[]; allDishes: any[] } = data;
+
   const restaurant = restaurants.find(r => r.id === Number(id));
   const selectedIds = typeof categories === 'string' && categories.length > 0 ? categories.split(',').map(Number) : [];
-  const selectedNames = allDishes.filter(d => selectedIds.includes(d.id)).map(d => d.name);
+  const selectedNames = allDishes.filter((d: any) => selectedIds.includes(d.id)).map((d: any) => d.name);
   const maxAmount = Number(amount) || 0;
-  const { addFavorite, removeFavorite, isFavorite } = useFavorite();
 
   if (!restaurant) {
     return <View style={styles.container}><Text>Ресторан не найден</Text></View>;
@@ -30,11 +40,13 @@ const RestaurantVariantsScreen = () => {
 
   let filteredDishes = restaurant.dishes;
   if (selectedNames.length > 0) {
-    filteredDishes = restaurant.dishes.filter(d => selectedNames.includes(d.category));
+    filteredDishes = restaurant.dishes.filter((d: any) => selectedNames.includes(d.category));
   }
+  // тупое ограничение, чтобы не вылетало
+  if (filteredDishes.length > 2) filteredDishes = filteredDishes.slice(0, 12);
   const combinations = getCombinations(filteredDishes)
-    .filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount)
-    .slice(0, 100); // TODO: крч дура тупая вылетает без ограничения, надо нормальный алгоритм придумать, а не просто ограничение
+    .filter((comb: any[]) => comb.reduce((sum, d: any) => sum + (typeof d.price === 'number' ? d.price : 0), 0) <= maxAmount)
+    .slice(0, 10);
 
   return (
     <View style={styles.container}>

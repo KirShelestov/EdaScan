@@ -1,218 +1,854 @@
-[
-  {
-    "category": "Горячие блюда",
-    "name": "Буузы",
-    "price": 72,
-    "img": "https://admin.monobox.app/cropped-image/500x500/4eb80b454f7a5e7bcefd299f163df420.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Пюре",
-    "price": 89,
-    "img": "https://admin.monobox.app/cropped-image/500x500/a64ef6a4d98e480c9b48e87272a90a0b.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Лапша с говядиной",
-    "price": 329,
-    "img": "https://admin.monobox.app/cropped-image/500x500/1ec0d682d2604f75d304d735c9e35c1d.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Плов с курицей 1/2",
-    "price": 180,
-    "img": "https://admin.monobox.app/cropped-image/500x500/575ad2522fa376724a43e06564bfd60c.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Лапша с курицей 1/2",
-    "price": 229,
-    "img": "https://admin.monobox.app/cropped-image/500x500/364f9f3cbcad4825ede20bf7e6b5fe13.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Плов с курицей",
-    "price": 230,
-    "img": "https://admin.monobox.app/cropped-image/500x500/d4711fd9c7b34bdea6aa18a64ab2e5a7.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Лапша с говядиной 1/2",
-    "price": 229,
-    "img": "https://admin.monobox.app/cropped-image/500x500/eeca74c6856dc65007aa9e1baf09636c.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Лапша с курицей",
-    "price": 299,
-    "img": "https://admin.monobox.app/cropped-image/500x500/5cf907da5c952df57da14a13469146bb.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Жаркое из курицы",
-    "price": 329,
-    "img": "https://admin.monobox.app/cropped-image/500x500/3249e7bacf22534eb36b91f0637dda19.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Цуйван",
-    "price": 199,
-    "img": "https://admin.monobox.app/cropped-image/500x500/5ac4931d255e9fb1d02be79efcff7c6a.webp"
-  },
-  {
-    "category": "Горячие блюда",
-    "name": "Рис",
-    "price": 59,
-    "img": "https://admin.monobox.app/cropped-image/500x500/8ad1be8589443bb1ff34e343a8e66abd.webp"
-  },
-  {
-    "category": "Салаты",
-    "name": "Салат Морковь по-корейски",
-    "price": 79,
-    "img": "https://admin.monobox.app/cropped-image/500x500/f8a78015ce6e6ddee5a99699e89ddc5d.webp"
-  },
-  {
-    "category": "Салаты",
-    "name": "Салат Свекольный",
-    "price": 79,
-    "img": "https://admin.monobox.app/cropped-image/500x500/ff4b3e73c24f50e88f7442dc05acfa20.webp"
-  },
-  {
-    "category": "Салаты",
-    "name": "Салат Витаминный",
-    "price": 79,
-    "img": "https://admin.monobox.app/cropped-image/500x500/5f9a8ead4513a7c19033ae56ae0fd650.webp"
-  },
-  {
-    "category": "Салаты",
-    "name": "Салат Фунчоза",
-    "price": 79,
-    "img": "https://admin.monobox.app/cropped-image/500x500/5eb1a39729df0a69f74b4a93e01cfe03.webp"
-  },
-  {
-    "category": "Салаты",
-    "name": "Салат Битые огурцы",
-    "price": 129,
-    "img": "https://admin.monobox.app/cropped-image/500x500/905d7885bba45c66b4727794dd8d077b.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Шулэн с говядиной",
-    "price": 179,
-    "img": "https://admin.monobox.app/cropped-image/500x500/4434f44c0ca16ff9b5711269e531be0c.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Шулэн ТомЯм",
-    "price": 299,
-    "img": "https://admin.monobox.app/cropped-image/500x500/662745ebbc00322dd26952be583922e9.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Борщ 1/2",
-    "price": 139,
-    "img": "https://admin.monobox.app/cropped-image/500x500/e14611a7c478d49ec548488f17eceec9.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Борщ",
-    "price": 189,
-    "img": "https://admin.monobox.app/cropped-image/500x500/0178b628939ca1ddb31f979c88cf8cf1.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Хлеб черный",
-    "price": 8,
-    "img": "https://admin.monobox.app/cropped-image/500x500/439267480395bc9c0e7f00054f74bc9b.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Хлеб белый",
-    "price": 8,
-    "img": "https://admin.monobox.app/cropped-image/500x500/1b8878bf7fe332b877175f7764dd5ed6.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Лагман 1/2",
-    "price": 189,
-    "img": "https://admin.monobox.app/cropped-image/500x500/fe6077f815fdba5b70b3d236a3382a60.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Лагман",
-    "price": 269,
-    "img": "https://admin.monobox.app/cropped-image/500x500/0908e42c4d946a05fe191fb0079d23eb.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Шулэн с говядиной 1/2",
-    "price": 129,
-    "img": "https://admin.monobox.app/cropped-image/500x500/4675a41ee22751b7fdb823251c919f78.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Шулэн с курицей",
-    "price": 179,
-    "img": "https://admin.monobox.app/cropped-image/500x500/f756f1999c05f9e8fa7f535bce76f617.webp"
-  },
-  {
-    "category": "Супы",
-    "name": "Шулэн с курицей 1/2",
-    "price": 129,
-    "img": "https://admin.monobox.app/cropped-image/500x500/377345a3a2e090063fb262aee07c94bf.webp"
-  },
-  {
-    "category": "Напитки",
-    "name": "Морс Облепиха",
-    "price": 119,
-    "img": "https://admin.monobox.app/cropped-image/500x500/58d0337d3f40c2f5ae009ef849abfdb0.webp"
-  },
-  {
-    "category": "Напитки",
-    "name": "Морс Брусника",
-    "price": 119,
-    "img": "https://admin.monobox.app/cropped-image/500x500/cca5d0c2f0823f3901dcd658a3bc330b.webp"
-  },
-  {
-    "category": "Десерты",
-    "name": "Бовы",
-    "price": 114,
-    "img": "https://admin.monobox.app/cropped-image/500x500/9812ed473ed0d1d83f6178648e9274c2.webp"
-  },
-  {
-    "category": "Десерты",
-    "name": "Сгущенка",
-    "price": 40,
-    "img": "https://admin.monobox.app/cropped-image/500x500/43160c66dc3044395768ebc4d02273df.webp"
-  },
-  {
-    "category": "Соусы",
-    "name": "Соус соевый",
-    "price": 40,
-    "img": "https://admin.monobox.app/cropped-image/500x500/ab07b670af9587deb68f8d63ae701481.webp"
-  },
-  {
-    "category": "Соусы",
-    "name": "Соус сметана",
-    "price": 40,
-    "img": "https://admin.monobox.app/cropped-image/500x500/f13aeaba71cdcbca9204ca7b42f1c3b5.webp"
-  },
-  {
-    "category": "Соусы",
-    "name": "Соус Хан Буз",
-    "price": 40,
-    "img": "https://admin.monobox.app/cropped-image/500x500/7dd9991ed4c47929cfe53689d18c75c3.webp"
-  },
-  {
-    "category": "Соусы",
-    "name": "Соус острый",
-    "price": 40,
-    "img": "https://admin.monobox.app/cropped-image/500x500/d3ecd2553b8c84dc751c52e9d5a643ff.webp"
-  },
-  {
-    "category": "Продукция",
-    "name": "Буузы замороженные 20 шт.",
-    "price": 1200,
-    "img": "https://admin.monobox.app/cropped-image/500x500/487f695247a8b10f7b1eebab9596f4ba.webp"
-  }
-]
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Хан-буз",
+      "dishes": [
+        {
+          "id": 1,
+          "name": "Буузы",
+          "price": 72,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 2,
+          "name": "Пюре",
+          "price": 89,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 3,
+          "name": "Лапша с говядиной",
+          "price": 329,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 4,
+          "name": "Плов с курицей 1/2",
+          "price": 180,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 5,
+          "name": "Лапша с курицей 1/2",
+          "price": 229,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 6,
+          "name": "Плов с курицей",
+          "price": 230,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 7,
+          "name": "Лапша с говядиной 1/2",
+          "price": 229,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 8,
+          "name": "Лапша с курицей",
+          "price": 299,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 9,
+          "name": "Жаркое из курицы",
+          "price": 329,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 10,
+          "name": "Цуйван",
+          "price": 199,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 11,
+          "name": "Рис",
+          "price": 59,
+          "category": "Горячие блюда"
+        },
+        {
+          "id": 12,
+          "name": "Салат Морковь по-корейски",
+          "price": 79,
+          "category": "Салаты"
+        },
+        {
+          "id": 13,
+          "name": "Салат Свекольный",
+          "price": 79,
+          "category": "Салаты"
+        },
+        {
+          "id": 14,
+          "name": "Салат Витаминный",
+          "price": 79,
+          "category": "Салаты"
+        },
+        {
+          "id": 15,
+          "name": "Салат Фунчоза",
+          "price": 79,
+          "category": "Салаты"
+        },
+        {
+          "id": 16,
+          "name": "Салат Битые огурцы",
+          "price": 129,
+          "category": "Салаты"
+        },
+        {
+          "id": 17,
+          "name": "Шулэн с говядиной",
+          "price": 179,
+          "category": "Супы"
+        },
+        {
+          "id": 18,
+          "name": "Шулэн ТомЯм",
+          "price": 299,
+          "category": "Супы"
+        },
+        {
+          "id": 19,
+          "name": "Борщ 1/2",
+          "price": 139,
+          "category": "Супы"
+        },
+        {
+          "id": 20,
+          "name": "Борщ",
+          "price": 189,
+          "category": "Супы"
+        },
+        {
+          "id": 21,
+          "name": "Хлеб черный",
+          "price": 8,
+          "category": "Супы"
+        },
+        {
+          "id": 22,
+          "name": "Хлеб белый",
+          "price": 8,
+          "category": "Супы"
+        },
+        {
+          "id": 23,
+          "name": "Лагман 1/2",
+          "price": 189,
+          "category": "Супы"
+        },
+        {
+          "id": 24,
+          "name": "Лагман",
+          "price": 269,
+          "category": "Супы"
+        },
+        {
+          "id": 25,
+          "name": "Шулэн с говядиной 1/2",
+          "price": 129,
+          "category": "Супы"
+        },
+        {
+          "id": 26,
+          "name": "Шулэн с курицей",
+          "price": 179,
+          "category": "Супы"
+        },
+        {
+          "id": 27,
+          "name": "Шулэн с курицей 1/2",
+          "price": 129,
+          "category": "Супы"
+        },
+        {
+          "id": 28,
+          "name": "Морс Облепиха",
+          "price": 119,
+          "category": "Напитки"
+        },
+        {
+          "id": 29,
+          "name": "Морс Брусника",
+          "price": 119,
+          "category": "Напитки"
+        },
+        {
+          "id": 30,
+          "name": "Бовы",
+          "price": 114,
+          "category": "Десерты"
+        },
+        {
+          "id": 31,
+          "name": "Сгущенка",
+          "price": 40,
+          "category": "Десерты"
+        },
+        {
+          "id": 32,
+          "name": "Соус соевый",
+          "price": 40,
+          "category": "Соусы"
+        },
+        {
+          "id": 33,
+          "name": "Соус сметана",
+          "price": 40,
+          "category": "Соусы"
+        },
+        {
+          "id": 34,
+          "name": "Соус Хан Буз",
+          "price": 40,
+          "category": "Соусы"
+        },
+        {
+          "id": 35,
+          "name": "Соус острый",
+          "price": 40,
+          "category": "Соусы"
+        },
+        {
+          "id": 36,
+          "name": "Буузы замороженные 20 шт.",
+          "price": 1200,
+          "category": "Продукция"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Солнечный день",
+      "dishes": [
+        {
+          "id": 1,
+          "name": "Комплексный обед  с сосисками четверг",
+          "price": 239,
+          "category": "Комплексные обеды"
+        },
+        {
+          "id": 2,
+          "name": "Комплексный обед с котлетой куриной четверг",
+          "price": 239,
+          "category": "Комплексные обеды"
+        },
+        {
+          "id": 3,
+          "name": "Столовые приборы",
+          "price": 1,
+          "category": "Сахар порционный и приборы"
+        },
+        {
+          "id": 4,
+          "name": "Сахар порционный 1 шт",
+          "price": 2,
+          "category": "Сахар порционный и приборы"
+        },
+        {
+          "id": 5,
+          "name": "Сырник",
+          "price": 70,
+          "category": "завтраки"
+        },
+        {
+          "id": 6,
+          "name": "Блинчик ветчина/сыр",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 7,
+          "name": "Блинчик с мясом",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 8,
+          "name": "Блинчик с яблоком и корицей",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 9,
+          "name": "Блинчик банан/шоколад",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 10,
+          "name": "Блинчик",
+          "price": 45,
+          "category": "блинчики"
+        },
+        {
+          "id": 11,
+          "name": "Блинчик вареная сгущ.",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 12,
+          "name": "Блинчик творог/сметана",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 13,
+          "name": "Блинчик с грибами и сыром",
+          "price": 65,
+          "category": "блинчики"
+        },
+        {
+          "id": 14,
+          "name": "Шоколадный топпинг",
+          "price": 30,
+          "category": "Сладкие добавки"
+        },
+        {
+          "id": 15,
+          "name": "Мёд",
+          "price": 30,
+          "category": "Сладкие добавки"
+        },
+        {
+          "id": 16,
+          "name": "Сгущенное молоко",
+          "price": 15,
+          "category": "Сладкие добавки"
+        },
+        {
+          "id": 17,
+          "name": "Варенье клубничное",
+          "price": 15,
+          "category": "Сладкие добавки"
+        },
+        {
+          "id": 18,
+          "name": "Салат Свежесть",
+          "price": 75,
+          "category": "салаты"
+        },
+        {
+          "id": 19,
+          "name": "Салат Бадриджани",
+          "price": 90,
+          "category": "салаты"
+        },
+        {
+          "id": 20,
+          "name": "Салат Гнездо глухаря",
+          "price": 120,
+          "category": "салаты"
+        },
+        {
+          "id": 21,
+          "name": "Салат Чешский с сухариками",
+          "price": 90,
+          "category": "салаты"
+        },
+        {
+          "id": 22,
+          "name": "Помидоры по-восточному",
+          "price": 75,
+          "category": "салаты"
+        },
+        {
+          "id": 23,
+          "name": "Салат Цезарь с курицей макси",
+          "price": 140,
+          "category": "салаты"
+        },
+        {
+          "id": 24,
+          "name": "Оливье классический",
+          "price": 90,
+          "category": "салаты"
+        },
+        {
+          "id": 25,
+          "name": "Поке с семгой",
+          "price": 240,
+          "category": "салаты"
+        },
+        {
+          "id": 26,
+          "name": "Салат Снежный краб",
+          "price": 100,
+          "category": "салаты"
+        },
+        {
+          "id": 27,
+          "name": "Салат семга от шефа",
+          "price": 190,
+          "category": "салаты"
+        },
+        {
+          "id": 28,
+          "name": "Салат Греческий макси",
+          "price": 140,
+          "category": "салаты"
+        },
+        {
+          "id": 29,
+          "name": "Салат дачный",
+          "price": 75,
+          "category": "салаты"
+        },
+        {
+          "id": 30,
+          "name": "Окрошка на квасе",
+          "price": 90,
+          "category": "супы"
+        },
+        {
+          "id": 31,
+          "name": "Суп-пюре Грибной",
+          "price": 90,
+          "category": "супы"
+        },
+        {
+          "id": 32,
+          "name": "Суп сырный с колбасками",
+          "price": 90,
+          "category": "супы"
+        },
+        {
+          "id": 33,
+          "name": "Щи со свежей капустой",
+          "price": 90,
+          "category": "супы"
+        },
+        {
+          "id": 34,
+          "name": "Солянка",
+          "price": 90,
+          "category": "супы"
+        },
+        {
+          "id": 35,
+          "name": "Майонез",
+          "price": 6,
+          "category": "Добавки к супам"
+        },
+        {
+          "id": 36,
+          "name": "Зелень",
+          "price": 6,
+          "category": "Добавки к супам"
+        },
+        {
+          "id": 37,
+          "name": "Сухарики",
+          "price": 3,
+          "category": "Добавки к супам"
+        },
+        {
+          "id": 38,
+          "name": "Сметана",
+          "price": 6,
+          "category": "Добавки к супам"
+        },
+        {
+          "id": 39,
+          "name": "Картофельное пюре на сливках",
+          "price": 85,
+          "category": "гарниры"
+        },
+        {
+          "id": 40,
+          "name": "Картофель отварной",
+          "price": 85,
+          "category": "гарниры"
+        },
+        {
+          "id": 41,
+          "name": "Рис Басмати",
+          "price": 95,
+          "category": "гарниры"
+        },
+        {
+          "id": 42,
+          "name": "Капуста с болгарским перцем",
+          "price": 85,
+          "category": "гарниры"
+        },
+        {
+          "id": 43,
+          "name": "Шампиньоны в сливках",
+          "price": 125,
+          "category": "гарниры"
+        },
+        {
+          "id": 44,
+          "name": "Брокколи",
+          "price": 140,
+          "category": "гарниры"
+        },
+        {
+          "id": 45,
+          "name": "Булгур отварной",
+          "price": 80,
+          "category": "гарниры"
+        },
+        {
+          "id": 46,
+          "name": "Рагу Калейдоскоп",
+          "price": 120,
+          "category": "гарниры"
+        },
+        {
+          "id": 47,
+          "name": "Баклажаны в сладком соусе Чили",
+          "price": 120,
+          "category": "гарниры"
+        },
+        {
+          "id": 48,
+          "name": "Гречка отварная с топленым маслом",
+          "price": 85,
+          "category": "гарниры"
+        },
+        {
+          "id": 49,
+          "name": "Язык по-кремлевски",
+          "price": 280,
+          "category": "горячее"
+        },
+        {
+          "id": 50,
+          "name": "Кнели из курицы",
+          "price": 150,
+          "category": "горячее"
+        },
+        {
+          "id": 51,
+          "name": "Курица в яйце",
+          "price": 150,
+          "category": "горячее"
+        },
+        {
+          "id": 52,
+          "name": "Котлета куриная с сыром",
+          "price": 130,
+          "category": "горячее"
+        },
+        {
+          "id": 53,
+          "name": "Сосиска",
+          "price": 50,
+          "category": "горячее"
+        },
+        {
+          "id": 54,
+          "name": "Котлета фирменная из мраморной говядины",
+          "price": 140,
+          "category": "горячее"
+        },
+        {
+          "id": 55,
+          "name": "Тефтели из говядины в розовом соусе",
+          "price": 130,
+          "category": "горячее"
+        },
+        {
+          "id": 56,
+          "name": "Оладьи куриные нежные",
+          "price": 150,
+          "category": "горячее"
+        },
+        {
+          "id": 57,
+          "name": "Курица по-киевски",
+          "price": 190,
+          "category": "горячее"
+        },
+        {
+          "id": 58,
+          "name": "Минтай под овощами",
+          "price": 150,
+          "category": "горячее"
+        },
+        {
+          "id": 59,
+          "name": "Стейк из форели",
+          "price": 350,
+          "category": "горячее"
+        },
+        {
+          "id": 60,
+          "name": "Горчица",
+          "price": 10,
+          "category": "соусы"
+        },
+        {
+          "id": 61,
+          "name": "Кетчуп",
+          "price": 20,
+          "category": "соусы"
+        },
+        {
+          "id": 62,
+          "name": "Соус Тар-тар",
+          "price": 20,
+          "category": "соусы"
+        },
+        {
+          "id": 63,
+          "name": "Десерт Брауни",
+          "price": 85,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 64,
+          "name": "Торт Сникерс",
+          "price": 75,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 65,
+          "name": "Торт Красный Бархат",
+          "price": 75,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 66,
+          "name": "Хлеб ремесленный пшеничный",
+          "price": 5,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 67,
+          "name": "Хлеб ремесленный чёрный",
+          "price": 5,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 68,
+          "name": "Эскимо(картошка)",
+          "price": 70,
+          "category": "десерты, выпечка, хлеб"
+        },
+        {
+          "id": 69,
+          "name": "Чай пакетированный черный",
+          "price": 25,
+          "category": "напитки"
+        },
+        {
+          "id": 70,
+          "name": "Чай пакетированный зелёный",
+          "price": 25,
+          "category": "напитки"
+        },
+        {
+          "id": 71,
+          "name": "Кисель из облепихи",
+          "price": 65,
+          "category": "напитки"
+        },
+        {
+          "id": 72,
+          "name": "Морс из вишни",
+          "price": 65,
+          "category": "напитки"
+        },
+        {
+          "id": 73,
+          "name": "Компот из сухофруктов",
+          "price": 65,
+          "category": "напитки"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Солянка",
+      "dishes": [
+        {
+          "id": 1,
+          "name": "Салат Бертран",
+          "price": 98,
+          "category": "салаты"
+        },
+        {
+          "id": 2,
+          "name": "Салат Капустный с зеленью",
+          "price": 67,
+          "category": "салаты"
+        },
+        {
+          "id": 3,
+          "name": "Салат Цезарь с курицей",
+          "price": 143,
+          "category": "салаты"
+        },
+        {
+          "id": 4,
+          "name": "Окрошка Домашняя",
+          "price": 101,
+          "category": "супы"
+        },
+        {
+          "id": 5,
+          "name": "Суп грибной с картофелем",
+          "price": 76,
+          "category": "супы"
+        },
+        {
+          "id": 6,
+          "name": "Котлета рыбная на пару",
+          "price": 139,
+          "category": "горячие блюда"
+        },
+        {
+          "id": 7,
+          "name": "Плов с курицей",
+          "price": 180,
+          "category": "горячие блюда"
+        },
+        {
+          "id": 8,
+          "name": "Картофель запеченный под сыром и майонезом",
+          "price": 88,
+          "category": "гарниры"
+        },
+        {
+          "id": 9,
+          "name": "Фасоль стручковая",
+          "price": 93,
+          "category": "гарниры"
+        },
+        {
+          "id": 10,
+          "name": "Перец фаршированный по-Грузински в соусе",
+          "price": 175,
+          "category": "грузинская кухня"
+        },
+        {
+          "id": 11,
+          "name": "Салат Тбилиси",
+          "price": 155,
+          "category": "грузинская кухня"
+        },
+        {
+          "id": 12,
+          "name": "Сациви с филе куриным",
+          "price": 210,
+          "category": "грузинская кухня"
+        },
+        {
+          "id": 13,
+          "name": "Суп Харчо с говядиной",
+          "price": 148,
+          "category": "грузинская кухня"
+        },
+        {
+          "id": 14,
+          "name": "бизнес ланч",
+          "price": 250,
+          "category": "бизнес ланч"
+        }
+      ]
+    }
+  ],
+  "allDishes": [
+    {
+      "id": 1,
+      "name": "Горячие блюда"
+    },
+    {
+      "id": 2,
+      "name": "Салаты"
+    },
+    {
+      "id": 3,
+      "name": "Супы"
+    },
+    {
+      "id": 4,
+      "name": "Напитки"
+    },
+    {
+      "id": 5,
+      "name": "Десерты"
+    },
+    {
+      "id": 6,
+      "name": "Соусы"
+    },
+    {
+      "id": 7,
+      "name": "Продукция"
+    },
+    {
+      "id": 8,
+      "name": "Комплексные обеды"
+    },
+    {
+      "id": 9,
+      "name": "Сахар порционный и приборы"
+    },
+    {
+      "id": 10,
+      "name": "завтраки"
+    },
+    {
+      "id": 11,
+      "name": "блинчики"
+    },
+    {
+      "id": 12,
+      "name": "Сладкие добавки"
+    },
+    {
+      "id": 13,
+      "name": "салаты"
+    },
+    {
+      "id": 14,
+      "name": "супы"
+    },
+    {
+      "id": 15,
+      "name": "Добавки к супам"
+    },
+    {
+      "id": 16,
+      "name": "гарниры"
+    },
+    {
+      "id": 17,
+      "name": "горячее"
+    },
+    {
+      "id": 18,
+      "name": "соусы"
+    },
+    {
+      "id": 19,
+      "name": "десерты, выпечка, хлеб"
+    },
+    {
+      "id": 20,
+      "name": "напитки"
+    },
+    {
+      "id": 21,
+      "name": "горячие блюда"
+    },
+    {
+      "id": 22,
+      "name": "грузинская кухня"
+    },
+    {
+      "id": 23,
+      "name": "бизнес ланч"
+    }
+  ]
+}

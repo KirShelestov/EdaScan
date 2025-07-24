@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { allDishes, restaurants } from '../data/mockData';
+import { useRemoteData } from '../data/useRemoteData';
 
 function getCombinations<T>(arr: T[]): T[][] {
   const result: T[][] = [[]];
@@ -15,81 +15,98 @@ function getCombinations<T>(arr: T[]): T[][] {
   return result.filter(comb => comb.length > 0);
 }
 
+const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`; 
+
 const ResultsScreen = () => {
+  const { data, loading, error } = useRemoteData(DATA_URL);
+
+  if (loading) return <Text>Загрузка...</Text>;
+  if (error) return <Text>Ошибка: {error}</Text>;
+  if (!data || !data.restaurants || !data.allDishes) return <Text>Нет данных</Text>;
+  const { restaurants, allDishes }: { restaurants: any[]; allDishes: any[] } = data;
+
   const { amount, categories } = useLocalSearchParams();
   const selectedIds = typeof categories === 'string' && categories.length > 0 ? categories.split(',').map(Number) : [];
-  const selectedNames = allDishes.filter(d => selectedIds.includes(d.id)).map(d => d.name);
+  const selectedNames = allDishes.filter((d: any) => selectedIds.includes(d.id)).map((d: any) => (d.name || '').toLowerCase().trim());
   const maxAmount = Number(amount) || 0;
   const router = useRouter();
 
-  const restaurantVariants = restaurants.map(rest => {
-    let filteredDishes = rest.dishes;
-    if (selectedNames.length > 0) {
-      filteredDishes = rest.dishes.filter(d => selectedNames.includes(d.category));
-    }
-    const combinations = getCombinations(filteredDishes)
-      .filter(comb => comb.reduce((sum, d) => sum + d.price, 0) <= maxAmount)
-      .slice(0, 100); // TODO: крч дура тупая вылетает без ограничения, надо нормальный алгоритм придумать, а не просто ограничение
-    return {
-      ...rest,
-      variants: combinations,
-    };
-  }).filter(r => r.variants.length > 0);
+  try {
+    const restaurantVariants = restaurants.map((rest: any) => {
+      let filteredDishes = rest.dishes;
+      if (selectedNames.length > 0 && selectedNames.length !== allDishes.length) {
+        filteredDishes = rest.dishes.filter(
+          (d: any) => selectedNames.includes((d.category || '').toLowerCase().trim())
+        );
+      }
+      // тупое ограничение, чтобы не вылетало
+      if (filteredDishes.length > 2) filteredDishes = filteredDishes.slice(0, 12);
+      const combinations = getCombinations(filteredDishes)
+        .filter((comb: any[]) => comb.reduce((sum, d: any) => sum + (typeof d.price === 'number' ? d.price : 0), 0) <= maxAmount)
+        .slice(0, 10);
+      return {
+        ...rest,
+        variants: combinations,
+      };
+    }).filter((r: any) => r.variants.length > 0);
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.headerRow}>
-        <Text style={styles.label}>Указанная сумма: </Text>
-        <Text style={styles.amount}>{amount}р</Text>
-      </View>
-      <View style={styles.headerRow}>
-        <Text style={styles.label}>Указанные категории: </Text>
-        <Text style={styles.categories} numberOfLines={1} ellipsizeMode="tail">
-          {selectedNames.slice(0, 7).join(', ')}{selectedNames.length > 7 ? ', ...' : ''}
-        </Text>
-      </View>
-      <FlatList
-        data={restaurantVariants}
-        keyExtractor={item => item.id.toString()}
-        style={{ marginTop: 24 }}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => router.push({
-              pathname: '/restaurantVariants',
-              params: {
-                id: item.id,
-                amount,
-                categories,
-              },
-            })}
-            activeOpacity={0.85}
-          >
-            <View style={styles.cardContent}>
-              <Image
-                source={require('../assets/images/icon.png')}
-                style={styles.restaurantImage}
-                resizeMode="cover"
-              />
-              <View style={{ flex: 1 }}>
-                <Text style={styles.restaurantName}>{item.name}</Text>
-                <Text style={styles.variantCount}>{item.variants.length} варианта</Text>
+    return (
+      <View style={styles.container}>
+        <View style={styles.headerRow}>
+          <Text style={styles.label}>Указанная сумма: </Text>
+          <Text style={styles.amount}>{amount}р</Text>
+        </View>
+        <View style={styles.headerRow}>
+          <Text style={styles.label}>Указанные категории: </Text>
+          <Text style={styles.categories} numberOfLines={1} ellipsizeMode="tail">
+            {selectedNames.slice(0, 7).join(', ')}{selectedNames.length > 7 ? ', ...' : ''}
+          </Text>
+        </View>
+        <FlatList
+          data={restaurantVariants}
+          keyExtractor={item => item.id.toString()}
+          style={{ marginTop: 24 }}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => router.push({
+                pathname: '/restaurantVariants',
+                params: {
+                  id: item.id,
+                  amount,
+                  categories,
+                },
+              })}
+              activeOpacity={0.85}
+            >
+              <View style={styles.cardContent}>
+                <Image
+                  source={require('../assets/images/icon.png')}
+                  style={styles.restaurantImage}
+                  resizeMode="cover"
+                />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.restaurantName}>{item.name}</Text>
+                  <Text style={styles.variantCount}>{item.variants.length} варианта</Text>
+                </View>
+                <View style={styles.arrowCircle}>
+                  <Ionicons name="arrow-forward" size={28} color="#fff" />
+                </View>
               </View>
-              <View style={styles.arrowCircle}>
-                <Ionicons name="arrow-forward" size={28} color="#fff" />
-              </View>
+            </TouchableOpacity>
+          )}
+          ListEmptyComponent={
+            <View style={styles.card}>
+              <Text style={styles.emptyText}>К сожалению, не нашлось подходящих вариантов</Text>
             </View>
-          </TouchableOpacity>
-        )}
-        ListEmptyComponent={
-          <View style={styles.card}>
-            <Text style={styles.emptyText}>К сожалению, не нашлось подходящих вариантов</Text>
-          </View>
-        }
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
-  );
+          }
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    );
+  } catch (e) {
+    return <Text>Ошибка в фильтрации: {String(e)}</Text>;
+  }
 };
 
 const styles = StyleSheet.create({

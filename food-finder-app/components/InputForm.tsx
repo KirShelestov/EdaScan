@@ -9,22 +9,14 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { allDishes } from "../data/mockData";
+import { useRemoteData } from "../data/useRemoteData";
+
+const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`;
 
 const ANY_DISH_ID = -1;
 
-const dishMap: Record<number, string> = {
-  [ANY_DISH_ID]: "Любое",
-  ...Object.fromEntries(allDishes.map(d => [d.id, d.name])),
-};
-
-const grid = [
-    [ANY_DISH_ID, 1, 2],
-    [3, 4, null],
-    [5, 6, "expand"],
-];
-
 const InputForm = () => {
+    const { data, loading, error } = useRemoteData(DATA_URL);
     const [amount, setAmount] = useState("");
     const [selectedDishes, setSelectedDishes] = useState<number[]>([
         ANY_DISH_ID,
@@ -32,9 +24,25 @@ const InputForm = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const router = useRouter();
 
+    if (loading) return <Text>Загрузка...</Text>;
+    if (error) return <Text>Ошибка: {error}</Text>;
+    if (!data) return null;
+    const { allDishes } = data;
+
+    const dishMap: Record<number, string> = {
+        [ANY_DISH_ID]: "Любое",
+        ...Object.fromEntries(allDishes.map((d: any) => [d.id, d.name])),
+    };
+
+    const grid = [
+        [ANY_DISH_ID, 1, 2],
+        [3, 4, null],
+        [5, 6, "expand"],
+    ];
+
     const handleSubmit = () => {
         const dishesToSend = selectedDishes.includes(ANY_DISH_ID)
-            ? allDishes.map((d) => d.id) 
+            ? allDishes.map((d: any) => d.id)
             : selectedDishes;
         router.push({
             pathname: "/results",
@@ -61,7 +69,7 @@ const InputForm = () => {
     };
 
     const usedIds = [1, 2, 3, 4, 5, 6];
-    const restDishes = allDishes.filter((d) => !usedIds.includes(d.id));
+    const restDishes = allDishes.filter((d: any) => !usedIds.includes(d.id));
 
     return (
         <View style={styles.container}>
@@ -149,7 +157,6 @@ const InputForm = () => {
                     Подобрать прием пищи
                 </Text>
             </TouchableOpacity>
-
             <Modal visible={modalVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalContent}>

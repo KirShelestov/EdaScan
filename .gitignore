@@ -175,3 +175,4 @@ ios/
 */.expo/
 food-finder-backend/.env
 */.env
+food-finder-app/.env

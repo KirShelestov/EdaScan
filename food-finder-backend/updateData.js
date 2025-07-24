@@ -27,7 +27,7 @@ async function updateRestaurants() {
     const khanbuz = normalizeData(khanbuzData, 1, "Хан-буз");
 
     const sunnydayData = await parseSunnyDayCategories();
-    const sunnyday = normalizeData(sunnydayData, 2, "Солекчный день");
+    const sunnyday = normalizeData(sunnydayData, 2, "Солнечный день");
 
     let stolovaya = null;
     const vkImg = await getLatestPostImage();
@@ -53,23 +53,16 @@ async function updateRestaurants() {
         name: cat,
     }));
 
-    const fileContent =
-        "export const restaurants = " +
-        JSON.stringify(restaurantsData, null, 2) +
-        ";\n\nexport const allDishes = " +
-        JSON.stringify(allDishes, null, 2) +
-        ";\n";
-
     const dataDir = path.join(__dirname, "data");
     if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir);
     }
     fs.writeFileSync(
-        path.join(dataDir, "restaurants.js"),
-        fileContent,
+        path.join(dataDir, "restaurants.json"),
+        JSON.stringify({ restaurants: restaurantsData, allDishes }, null, 2),
         "utf-8"
     );
-    console.log("Данные сохранены в формате JS-модуля:", new Date());
+    console.log("Данные сохранены в формате JSON:", new Date());
 }
 
 updateRestaurants();
