@@ -173,4 +173,5 @@ ios/
 
 */node_modules/
 */.expo/
-
+food-finder-backend/.env
+*/.env
