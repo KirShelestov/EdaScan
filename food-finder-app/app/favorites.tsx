@@ -4,8 +4,9 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFavorite } from '../components/FavoriteContext';
 import { useRemoteData } from '../data/useRemoteData';
+import { FOODFINDER_API_HOST } from '@env';
 
-const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`;
+const DATA_URL = `${FOODFINDER_API_HOST}/restaurants.json`;
 
 const FavoritesScreen = () => {
   const { data, loading, error } = useRemoteData(DATA_URL);

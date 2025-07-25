@@ -4,6 +4,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useFavorite } from '../components/FavoriteContext';
 import VariantCard from '../components/VariantCard';
 import { useRemoteData } from '../data/useRemoteData';
+import { FOODFINDER_API_HOST } from '@env';
 
 function getCombinations<T>(arr: T[]): T[][] {
   const result: T[][] = [[]];
@@ -16,7 +17,7 @@ function getCombinations<T>(arr: T[]): T[][] {
   return result.filter(comb => comb.length > 0);
 }
 
-const DATA_URL = `${process.env.FOODFINDER_API_HOST}/restaurants.json`; 
+const DATA_URL = `${FOODFINDER_API_HOST}/restaurants.json`; 
 
 const RestaurantVariantsScreen = () => {
   const { data, loading, error } = useRemoteData(DATA_URL);
