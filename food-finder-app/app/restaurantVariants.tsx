@@ -17,7 +17,7 @@ function getCombinations<T>(arr: T[]): T[][] {
   return result.filter(comb => comb.length > 0);
 }
 
-const DATA_URL = `${FOODFINDER_API_HOST}/restaurants.json`; 
+const DATA_URL = `${FOODFINDER_API_HOST}`; 
 
 const RestaurantVariantsScreen = () => {
   const { data, loading, error } = useRemoteData(DATA_URL);

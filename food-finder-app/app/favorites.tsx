@@ -6,7 +6,7 @@ import { useFavorite } from '../components/FavoriteContext';
 import { useRemoteData } from '../data/useRemoteData';
 import { FOODFINDER_API_HOST } from '@env';
 
-const DATA_URL = `${FOODFINDER_API_HOST}/restaurants.json`;
+const DATA_URL = `${FOODFINDER_API_HOST}`;
 
 const FavoritesScreen = () => {
   const { data, loading, error } = useRemoteData(DATA_URL);
