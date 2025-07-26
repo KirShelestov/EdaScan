@@ -10,9 +10,8 @@ import {
     View,
 } from "react-native";
 import { useRemoteData } from "../data/useRemoteData";
-import { FOODFINDER_API_HOST } from '@env';
 
-const DATA_URL = `${FOODFINDER_API_HOST}`;
+const DATA_URL = "https://kirshelestov.github.io/EdaScan/food-finder-backend/data/restaurants.json"; 
 
 const ANY_DISH_ID = -1;
 

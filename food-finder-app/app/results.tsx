@@ -3,20 +3,80 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRemoteData } from '../data/useRemoteData';
-import { FOODFINDER_API_HOST } from '@env';
 
-function getCombinations<T>(arr: T[]): T[][] {
-  const result: T[][] = [[]];
-  for (const value of arr) {
-    const copy = [...result];
-    for (const prefix of copy) {
-      result.push(prefix.concat(value));
+function knapsackTopVariants(items: {id: number, name: string, price: number}[], maxAmount: number, limit = 50) {
+  const n = items.length;
+  const dp: Map<number, {dishes: number[], total: number}[]> = new Map();
+  dp.set(0, [{dishes: [], total: 0}]);
+
+  for (let i = 0; i < n; i++) {
+    const price = items[i].price;
+    const newDp = new Map(dp);
+    
+    for (const [sum, variants] of dp.entries()) {
+      const newSum = sum + price;
+      if (newSum > maxAmount) continue;
+      
+      for (const variant of variants) {
+        if (variant.dishes.includes(i)) continue;
+        
+        const newDishes = [...variant.dishes, i];
+        const newTotal = variant.total + price;
+        const arr = newDp.get(newSum) || [];
+        arr.push({dishes: newDishes, total: newTotal});
+        newDp.set(newSum, arr);
+      }
     }
+    
+    for (const [sum, arr] of newDp.entries()) {
+      newDp.set(sum, arr.sort((a, b) => b.total - a.total).slice(0, Math.min(limit, 20)));
+    }
+    
+    dp.clear();
+    for (const [k, v] of newDp.entries()) dp.set(k, v);
   }
-  return result.filter(comb => comb.length > 0);
+
+  const allVariants: {dishes: number[], total: number}[] = [];
+  for (const arr of dp.values()) allVariants.push(...arr);
+  
+  const unique = new Map();
+  for (const v of allVariants) {
+    const key = v.dishes.slice().sort((a, b) => a - b).join(',');
+    if (!unique.has(key)) unique.set(key, v);
+  }
+  
+  return Array.from(unique.values())
+    .sort((a, b) => b.total - a.total)
+    .slice(0, limit)
+    .map(v => v.dishes.map((idx: number) => items[idx]));
 }
 
-const DATA_URL = `${FOODFINDER_API_HOST}`; 
+function getVariantText(count: number): string {
+  if (count === 0) return 'вариантов';
+  if (count === 1) return 'вариант';
+  if (count >= 2 && count <= 4) return 'варианта';
+  if (count >= 5 && count <= 20) return 'вариантов';
+  const lastDigit = count % 10;
+  if (lastDigit === 1) return 'вариант';
+  if (lastDigit >= 2 && lastDigit <= 4) return 'варианта';
+  return 'вариантов';
+}
+
+function getRestaurantImage(restaurantName: string): any {
+  if (restaurantName.includes('Хан-буз')) {
+    return require('../assets/images/khanbuz.png');
+  }
+  if (restaurantName.includes('Солнечный день')) {
+    return require('../assets/images/sunnyday.png');
+  }
+  if (restaurantName.includes('Солянка')) {
+    return require('../assets/images/solyanka.png');
+  }
+  return require('../assets/images/icon.png'); 
+}
+
+const DATA_URL = "https://kirshelestov.github.io/EdaScan/food-finder-backend/data/restaurants.json"; 
+
 
 const ResultsScreen = () => {
   const { data, loading, error } = useRemoteData(DATA_URL);
@@ -40,11 +100,7 @@ const ResultsScreen = () => {
           (d: any) => selectedNames.includes((d.category || '').toLowerCase().trim())
         );
       }
-      // тупое ограничение, чтобы не вылетало
-      if (filteredDishes.length > 2) filteredDishes = filteredDishes.slice(0, 12);
-      const combinations = getCombinations(filteredDishes)
-        .filter((comb: any[]) => comb.reduce((sum, d: any) => sum + (typeof d.price === 'number' ? d.price : 0), 0) <= maxAmount)
-        .slice(0, 10);
+      const combinations = knapsackTopVariants(filteredDishes, maxAmount, 50);
       return {
         ...rest,
         variants: combinations,
@@ -82,13 +138,13 @@ const ResultsScreen = () => {
             >
               <View style={styles.cardContent}>
                 <Image
-                  source={require('../assets/images/icon.png')}
+                  source={getRestaurantImage(item.name)}
                   style={styles.restaurantImage}
                   resizeMode="cover"
                 />
                 <View style={{ flex: 1 }}>
                   <Text style={styles.restaurantName}>{item.name}</Text>
-                  <Text style={styles.variantCount}>{item.variants.length} варианта</Text>
+                  <Text style={styles.variantCount}>{item.variants.length} {getVariantText(item.variants.length)}</Text>
                 </View>
                 <View style={styles.arrowCircle}>
                   <Ionicons name="arrow-forward" size={28} color="#fff" />
@@ -186,6 +242,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     flex: 1,
     width: '100%',
+  },
+  restaurantIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#4CAF50',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
   },
 });
 

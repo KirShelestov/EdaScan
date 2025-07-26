@@ -43,7 +43,7 @@ const VariantCard: React.FC<Props> = ({
                 />
             </TouchableOpacity>
             <Text style={styles.variantTitle}>
-                {index !== undefined ? `${index + 1} вариант` : "Вариант"}
+                {index !== undefined ? `${index + 1} вариант - ${total}₽` : `Вариант - ${total}₽`}
             </Text>
             {dishes.map((dish) => (
                 <Text key={dish.id} style={styles.dishText}>
