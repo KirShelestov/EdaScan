@@ -35,7 +35,9 @@ export async function parseSunnyDayCategories() {
 
                 if (name && price) {
                     dishes.push({
-                        category,
+                        category:
+                            category.charAt(0).toUpperCase() +
+                            category.slice(1).toLowerCase(),
                         name,
                         price: Number(price),
                         img,

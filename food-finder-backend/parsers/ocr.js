@@ -10,12 +10,12 @@ export async function recognizeImageText(imageUrl) {
 }
 
 const CATEGORIES = [
-    "салаты",
-    "супы",
-    "горячие блюда",
-    "гарниры",
-    "грузинская кухня",
-    "бизнес ланч",
+    "Салаты",
+    "Супы",
+    "Горячие блюда",
+    "Гарниры",
+    "Грузинская кухня",
+    "Бизнес ланч",
 ];
 
 export function parseOcrMenuText(text) {
