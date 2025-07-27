@@ -8,12 +8,40 @@ import { useRemoteData } from '../data/useRemoteData';
 const DATA_URL = "https://kirshelestov.github.io/EdaScan/food-finder-backend/data/restaurants.json"; 
 
 const FavoritesScreen = () => {
-  const { data, loading, error } = useRemoteData(DATA_URL);
-  const { favorites, removeFavorite } = useFavorite();
+  const { data, loading: dataLoading, error } = useRemoteData(DATA_URL);
+  const { favorites, removeFavorite, loading: favoritesLoading } = useFavorite();
   const router = useRouter();
 
-  if (loading) return <Text>Загрузка...</Text>;
-  if (error) return <Text>Ошибка: {error}</Text>;
+  if (dataLoading || favoritesLoading) {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.logoBtn} onPress={() => router.replace('/main')}>
+          <View style={styles.logoCircle}>
+            <Ionicons name="search" size={28} color="#FFA500" />
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.title}>Избранные варианты</Text>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Загрузка избранного...</Text>
+        </View>
+      </View>
+    );
+  }
+
+  if (error) return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.logoBtn} onPress={() => router.replace('/main')}>
+        <View style={styles.logoCircle}>
+          <Ionicons name="search" size={28} color="#FFA500" />
+        </View>
+      </TouchableOpacity>
+      <Text style={styles.title}>Избранные варианты</Text>
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Ошибка загрузки данных: {error}</Text>
+      </View>
+    </View>
+  );
+
   if (!data) return null;
   const { restaurants } = data;
 
@@ -118,6 +146,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 48,
     marginBottom: 24,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    fontSize: 18,
+    color: '#666',
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  errorText: {
+    fontSize: 16,
+    color: '#ff4444',
+    textAlign: 'center',
   },
   card: {
     backgroundColor: '#FFA500',
