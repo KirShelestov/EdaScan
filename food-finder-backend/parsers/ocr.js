@@ -27,11 +27,16 @@ export function parseOcrMenuText(text) {
     let currentCategory = null;
 
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].toLowerCase();
+        const line = lines[i];
 
-        if (CATEGORIES.includes(line)) {
+        // Проверяем, является ли строка категорией
+        if (
+            CATEGORIES.some((cat) =>
+                line.toLowerCase().includes(cat.toLowerCase())
+            )
+        ) {
             currentCategory = line;
-            if (line === "бизнес ланч") {
+            if (line.toLowerCase().includes("бизнес ланч")) {
                 result.push({
                     category: "бизнес ланч",
                     name: "бизнес ланч",
@@ -44,20 +49,66 @@ export function parseOcrMenuText(text) {
 
         if (!currentCategory) continue;
 
-        const match = lines[i].match(/^(.+?)\s+\d+\s*гр\s+(\d{2,4}[,.]\d{2})/i);
+        // Новый паттерн: название + вес + цена
+        // Пример: "Салат Оливье 100гр 98,00"
+        const match = line.match(/^(.+?)\s+(\d+)\s*гр\s+(\d+[,.]?\d*)/i);
         if (match) {
             const name = match[1].trim();
-            const price = Number(match[2].replace(",", "."));
-            result.push({ category: currentCategory, name, price });
+            const weight = match[2];
+            const price = Number(match[3].replace(",", "."));
+
+            // Пропускаем строки с описанием ингредиентов в скобках
+            if (name.includes("(") && name.includes(")")) continue;
+
+            result.push({
+                category: currentCategory,
+                name,
+                price,
+            });
             continue;
         }
 
-        const altMatch = lines[i].match(/^(.+?)\s+\d+\s*гр\s+(\d{2,4})/i);
+        // Альтернативный паттерн: название + цена (без веса)
+        const altMatch = line.match(/^(.+?)\s+(\d+[,.]?\d*)\s*р\.?$/i);
         if (altMatch) {
             const name = altMatch[1].trim();
-            const price = Number(altMatch[2]);
-            result.push({ category: currentCategory, name, price });
+            const price = Number(altMatch[2].replace(",", "."));
+
+            // Пропускаем строки с описанием ингредиентов
+            if (name.includes("(") && name.includes(")")) continue;
+
+            result.push({
+                category: currentCategory,
+                name,
+                price,
+            });
             continue;
+        }
+
+        // Паттерн для блюд с весом в конце: "название 100гр"
+        const weightMatch = line.match(/^(.+?)\s+(\d+)\s*гр$/i);
+        if (weightMatch) {
+            const name = weightMatch[1].trim();
+
+            // Пропускаем строки с описанием ингредиентов
+            if (name.includes("(") && name.includes(")")) continue;
+
+            // Ищем цену в следующей строке
+            if (i + 1 < lines.length) {
+                const nextLine = lines[i + 1];
+                const priceMatch = nextLine.match(/^(\d+[,.]?\d*)/);
+                if (priceMatch) {
+                    const price = Number(priceMatch[1].replace(",", "."));
+                    result.push({
+                        category: currentCategory,
+                        name,
+                        price,
+                        weight: weightMatch[2] + "гр",
+                    });
+                    i++; // Пропускаем строку с ценой
+                    continue;
+                }
+            }
         }
     }
 
