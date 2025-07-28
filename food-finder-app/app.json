@@ -1,7 +1,7 @@
 {
     "expo": {
         "name": "EdaScan",
-        "slug": "edascan",
+        "slug": "food-finder-app",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/images/EdaScanLogo.png",
