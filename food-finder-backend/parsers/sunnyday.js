@@ -14,8 +14,12 @@ export async function parseSunnyDayCategories() {
     const dishes = [];
 
     $(".cat-name").each((i, el) => {
-        const category = $(el).text().trim();
+        let category = $(el).text().trim();
         if (!category || skip.includes(category)) return;
+
+        if (category.toLowerCase() === "горячее") {
+            category = "Горячие блюда";
+        }
 
         let $next = $(el).next();
         while ($next.length && !$next.hasClass("cat-name")) {
